@@ -1,1 +1,242 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Course Application | Levite Press Uganda</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="nav"><a class="brand" href="index.html"><img src="assets/logo.jpg"><span>LEVITE PRESS<small>ONLINE SECRETARIAL SERVICES</small></span></a><a class="btn dark" href="index.html">← Home</a></nav><main class="section"><div class="title"><h2>Online Course Application</h2><p>Digital Skills, AI & Modern Workplace Online Academy</p></div><div class="application"><div class="notice">Online classes operate 24/6: Monday–Friday and Sunday. Saturday is not available. Select exactly 3–4 preferred days; Levite Press will confirm your final timetable.</div><form onsubmit="return submitApplication(event)"><div class="form-grid"><div><label>Full Name<input name="fullname" required></label></div><div><label>Date of Birth<input name="dob" type="date" required></label></div><div><label>Gender<select name="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></label></div><div><label>Phone / WhatsApp<input name="phone" type="tel" required></label></div><div><label>Email Address<input name="email" type="email" required></label></div><div><label>Location / District<input name="location" required></label></div><div><label>Course / Programme<select name="course" required><option value="">Select</option><option>Digital Skills, AI & Modern Workplace</option><option>Digital Foundations</option><option>Workplace Digital Skills</option><option>AI for Work & Productivity</option><option>Advanced Digital & Workplace</option><option>Digital Professional</option></select></label></div><div><label>Preferred Level<select name="level" required><option>Level 1 — Beginner</option><option>Level 2 — Intermediate</option><option>Level 3 — AI & Productivity</option><option>Level 4 — Advanced</option><option>Level 5 — Professional</option></select></label></div><div><label>Passport-size Photo (JPEG/PNG)<input name="photo" type="file" accept="image/jpeg,image/png" required></label></div><div><label>Preferred Class Time<select name="time" required><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Custom time — to be discussed</option></select></label></div></div><h3>Preferred Class Days — select 3–4</h3><div class="days"> <label><input type="checkbox" name="days" value="Monday"> Monday</label><label><input type="checkbox" name="days" value="Tuesday"> Tuesday</label><label><input type="checkbox" name="days" value="Wednesday"> Wednesday</label><label><input type="checkbox" name="days" value="Thursday"> Thursday</label><label><input type="checkbox" name="days" value="Friday"> Friday</label><label><input type="checkbox" name="days" value="Sunday"> Sunday</label><label style="opacity:.5"><input type="checkbox" disabled> Saturday — No service</label></div><p><label>Education / Previous Digital Experience<textarea name="experience" required></textarea></label></p><p><label>Additional Information<textarea name="additional"></textarea></label></p><label><input type="checkbox" required style="width:auto"> I confirm that the information provided is accurate.</label><p><button class="btn" type="submit">Submit Application →</button></p></form><div class="success"><h2>✅ Application Submitted Successfully</h2><p>Your application reference number is <b id="ref"></b>.</p><p>Your application is now locked. If an issue is found, Levite Press will return it to you with a correction request before you can edit and resubmit it.</p><a class="btn dark" href="index.html">Return to Website</a></div></div></main><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Course Application | Levite Press Uganda</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="logo.jpg" alt="Levite Press Logo">
+    <span>
+      LEVITE PRESS
+      <small>ONLINE SECRETARIAL SERVICES</small>
+    </span>
+  </a>
+
+  <a class="btn dark" href="index.html">← Home</a>
+</nav>
+
+<main class="section">
+
+  <div class="title">
+    <h2>Online Course Application</h2>
+    <p>Digital Skills, AI & Modern Workplace Online Academy</p>
+  </div>
+
+  <div class="application">
+
+    <div class="notice">
+      Online classes operate 24/6: Monday–Friday and Sunday.
+      Saturday is not available. Select exactly 3–4 preferred days;
+      Levite Press will confirm your final timetable.
+    </div>
+
+    <form onsubmit="return submitApplication(event)">
+
+      <div class="form-grid">
+
+        <div>
+          <label>
+            Full Name
+            <input name="fullname" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Date of Birth
+            <input name="dob" type="date" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Gender
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Prefer not to say</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Phone / WhatsApp
+            <input name="phone" type="tel" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Email Address
+            <input name="email" type="email" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Location / District
+            <input name="location" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Course / Programme
+            <select name="course" required>
+              <option value="">Select</option>
+              <option>Digital Skills, AI & Modern Workplace</option>
+              <option>Digital Foundations</option>
+              <option>Workplace Digital Skills</option>
+              <option>AI for Work & Productivity</option>
+              <option>Advanced Digital & Workplace</option>
+              <option>Digital Professional</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Preferred Level
+            <select name="level" required>
+              <option>Level 1 — Beginner</option>
+              <option>Level 2 — Intermediate</option>
+              <option>Level 3 — AI & Productivity</option>
+              <option>Level 4 — Advanced</option>
+              <option>Level 5 — Professional</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Passport-size Photo (JPEG/PNG)
+            <input
+              name="photo"
+              type="file"
+              accept="image/jpeg,image/png"
+              required
+            >
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Preferred Class Time
+            <select name="time" required>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+              <option>Custom time — to be discussed</option>
+            </select>
+          </label>
+        </div>
+
+      </div>
+
+      <h3>Preferred Class Days — select 3–4</h3>
+
+      <div class="days">
+
+        <label>
+          <input type="checkbox" name="days" value="Monday">
+          Monday
+        </label>
+
+        <label>
+          <input type="checkbox" name="days" value="Tuesday">
+          Tuesday
+        </label>
+
+        <label>
+          <input type="checkbox" name="days" value="Wednesday">
+          Wednesday
+        </label>
+
+        <label>
+          <input type="checkbox" name="days" value="Thursday">
+          Thursday
+        </label>
+
+        <label>
+          <input type="checkbox" name="days" value="Friday">
+          Friday
+        </label>
+
+        <label>
+          <input type="checkbox" name="days" value="Sunday">
+          Sunday
+        </label>
+
+        <label style="opacity:.5">
+          <input type="checkbox" disabled>
+          Saturday — No service
+        </label>
+
+      </div>
+
+      <p>
+        <label>
+          Education / Previous Digital Experience
+          <textarea name="experience" required></textarea>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Additional Information
+          <textarea name="additional"></textarea>
+        </label>
+      </p>
+
+      <label>
+        <input type="checkbox" required style="width:auto">
+        I confirm that the information provided is accurate.
+      </label>
+
+      <p>
+        <button class="btn" type="submit">
+          Submit Application →
+        </button>
+      </p>
+
+    </form>
+
+    <div class="success">
+
+      <h2>✅ Application Submitted Successfully</h2>
+
+      <p>
+        Your application reference number is
+        <b id="ref"></b>.
+      </p>
+
+      <p>
+        Your application is now locked. If an issue is found,
+        Levite Press will return it to you with a correction request
+        before you can edit and resubmit it.
+      </p>
+
+      <a class="btn dark" href="index.html">
+        Return to Website
+      </a>
+
+    </div>
+
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>

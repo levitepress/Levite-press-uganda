@@ -389,5 +389,95 @@ in Uganda.
 
 </footer>
 
+<!-- Supabase Content Connection -->
+<script>
+const SUPABASE_URL = "https://hpcbfitnzyfxpngxofoe.supabase.co";
+const SUPABASE_KEY = "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
+
+async function loadLevitePressContent() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/site_content?select=section_key,title,content,data`,
+      {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Unable to connect to Supabase");
+    }
+
+    const sections = await response.json();
+
+    const content = {};
+    sections.forEach(section => {
+      content[section.section_key] = section;
+    });
+
+    // Update brand/tagline
+    if (content.brand) {
+      const tagline = content.brand.content;
+
+      document.querySelectorAll(".top span").forEach((element, index) => {
+        if (index === 0 && tagline) {
+          element.textContent = "⭐ " + tagline;
+        }
+      });
+    }
+
+    // Update services section
+    if (content.services) {
+      const servicesTitle = document.querySelector("#services h2");
+      const servicesDescription = document.querySelector("#services .title p");
+
+      if (servicesTitle && content.services.title) {
+        servicesTitle.textContent = content.services.title;
+      }
+
+      if (servicesDescription && content.services.content) {
+        servicesDescription.textContent = content.services.content;
+      }
+    }
+
+    // Update academy/classes information
+    if (content.classes) {
+      const academyDescription = document.querySelector("#academy .title p");
+
+      if (academyDescription && content.classes.content) {
+        academyDescription.textContent = content.classes.content;
+      }
+    }
+
+    // Update contact email
+    if (content.contact && content.contact.data) {
+      const email = content.contact.data.email;
+
+      if (email) {
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+          link.href = "mailto:" + email;
+          link.textContent = email;
+        });
+      }
+
+      document.querySelectorAll(".footer p").forEach(element => {
+        if (element.textContent.includes("info@levitepress.online")) {
+          element.textContent = "✉️ " + email;
+        }
+      });
+    }
+
+    console.log("Levite Press content loaded from Supabase.");
+
+  } catch (error) {
+    console.error("Supabase connection error:", error);
+  }
+}
+
+loadLevitePressContent();
+</script>
+
 </body>
 </html>

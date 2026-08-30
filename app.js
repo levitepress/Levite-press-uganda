@@ -1,5 +1,7 @@
-const SUPABASE_URL = "https://uetartchgavbavvhzao.supabase.co";
-const SUPABASE_KEY = "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
+const SUPABASE_URL = "https://hpcbfitnzyfxpngxofoe.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
 
 async function submitApplication(e) {
   e.preventDefault();

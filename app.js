@@ -1,7 +1,5 @@
 const SUPABASE_URL = "https://uetartchgavbavvhzao.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
+const SUPABASE_KEY = "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
 
 async function submitApplication(e) {
   e.preventDefault();
@@ -13,9 +11,7 @@ async function submitApplication(e) {
   ];
 
   if (days.length < 3 || days.length > 4) {
-    alert(
-      "Please select exactly 3–4 preferred class days. Saturday is not available."
-    );
+    alert("Please select exactly 3–4 preferred class days. Saturday is not available.");
     return false;
   }
 
@@ -36,64 +32,47 @@ async function submitApplication(e) {
 
   const application = {
     id: Date.now(),
-
     reference: reference,
-
     full_name: f.fullname.value.trim(),
-
     date_of_birth: f.dob.value,
-
     gender: f.gender.value,
-
     phone: f.phone.value.trim(),
-
     email: f.email.value.trim(),
-
     location: f.location.value.trim(),
-
     course: f.course.value,
-
     level: f.level.value,
-
     photo_path: photo.name,
-
     preferred_time: f.time.value,
-
     preferred_days: days.map(day => day.value),
-
     experience: f.experience.value.trim(),
-
     additional_information: f.additional.value.trim(),
-
     status: "submitted"
   };
 
   try {
-
     const response = await fetch(
       SUPABASE_URL + "/rest/v1/applications",
       {
         method: "POST",
-
         headers: {
           "apikey": SUPABASE_KEY,
           "Authorization": "Bearer " + SUPABASE_KEY,
           "Content-Type": "application/json",
           "Prefer": "return=minimal"
         },
-
         body: JSON.stringify(application)
       }
     );
 
+    const responseText = await response.text();
+
     if (!response.ok) {
-
-      const errorText = await response.text();
-
-      console.error("Supabase error:", errorText);
+      console.error("SUPABASE ERROR:", response.status, responseText);
 
       alert(
-        "The application could not be submitted. Please try again."
+        "Supabase rejected the application.\n\n" +
+        "Error " + response.status + ":\n" +
+        responseText
       );
 
       return false;
@@ -114,17 +93,17 @@ async function submitApplication(e) {
     f.style.display = "none";
 
     const success = document.querySelector(".success");
-
     success.style.display = "block";
 
     document.querySelector("#ref").textContent = reference;
 
   } catch (error) {
-
-    console.error("Submission error:", error);
+    console.error("FETCH ERROR:", error);
 
     alert(
-      "There was a connection problem. Please check your internet connection and try again."
+      "The browser could not connect to Supabase.\n\n" +
+      "Technical error:\n" +
+      error.message
     );
   }
 

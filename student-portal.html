@@ -1,1 +1,77 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Portal | Levite Press</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="nav"><a class="brand" href="index.html"><img src="assets/logo.jpg"><span>LEVITE PRESS<small>STUDENT PORTAL</small></span></a></nav><main class="section"><div class="application"><h2>🔒 Student Portal</h2><p>Enter the access password provided by Levite Press via WhatsApp.</p><input id="pw" type="password" placeholder="Enter access password"><br><br><button class="btn dark" onclick="login()">Access Portal</button><div id="msg" class="notice" style="display:none"></div><p class="small">Need the password? Contact Levite Press on WhatsApp.</p><a class="btn" href="https://wa.me/256700123456">Chat on WhatsApp</a></div></main><script>function login(){document.getElementById('msg').style.display='block';document.getElementById('msg').textContent='The secure student authentication system will be connected to the school backend before this portal is used for real student data.'}</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Student Portal | Levite Press</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="logo.jpg" alt="Levite Press Logo">
+    <span>
+      LEVITE PRESS
+      <small>STUDENT PORTAL</small>
+    </span>
+  </a>
+</nav>
+
+<main class="section">
+
+  <div class="application">
+
+    <h2>🔒 Student Portal</h2>
+
+    <p>
+      Enter the access password provided by Levite Press via WhatsApp.
+    </p>
+
+    <input
+      id="pw"
+      type="password"
+      placeholder="Enter access password"
+    >
+
+    <br><br>
+
+    <button class="btn dark" onclick="login()">
+      Access Portal
+    </button>
+
+    <div
+      id="msg"
+      class="notice"
+      style="display:none"
+    ></div>
+
+    <p class="small">
+      Need the password? Contact Levite Press on WhatsApp.
+    </p>
+
+    <a
+      class="btn"
+      href="https://wa.me/256700123456"
+    >
+      Chat on WhatsApp
+    </a>
+
+  </div>
+
+</main>
+
+<script>
+function login() {
+  document.getElementById('msg').style.display = 'block';
+
+  document.getElementById('msg').textContent =
+    'The secure student authentication system will be connected to the school backend before this portal is used for real student data.';
+}
+</script>
+
+</body>
+</html>

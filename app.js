@@ -1,113 +1,238 @@
-const SUPABASE_URL = "https://hpcbfitnzyfxpngxofoe.supabase.co";
+(() => {
+  const WHATSAPP_NUMBER = "256786665412";
+  const CONTACT_EMAIL = "levitepressug@gmail.com";
 
-const SUPABASE_KEY =
-  "sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ";
+  // Mobile navigation
+  const menu = document.querySelector('.menu');
+  const links = document.querySelector('.links');
 
-async function submitApplication(e) {
-  e.preventDefault();
+  if (menu && links) {
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
 
-  const f = e.target;
-
-  const days = [
-    ...f.querySelectorAll('input[name="days"]:checked')
-  ];
-
-  if (days.length < 3 || days.length > 4) {
-    alert("Please select exactly 3–4 preferred class days. Saturday is not available.");
-    return false;
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
-  const photoInput = f.querySelector('input[name="photo"]');
+  // Service-request form
+  const form = document.getElementById('quoteForm');
 
-  if (!photoInput.files || photoInput.files.length === 0) {
-    alert("Please select your passport-size photo.");
-    return false;
-  }
+  if (form) {
+    const params = new URLSearchParams(location.search);
+    const preset = params.get('service');
 
-  const photo = photoInput.files[0];
+    const aliases = {
+      'software-development': 'software-app-development',
+      'database-management': 'database-digital-solutions',
+      'secretarial': 'secretarial-services',
+      'computer-training': 'computer-training',
+      'website-design': 'website-design',
+      'printing': 'printing-graphics-typesetting',
+      'graphic-design': 'printing-graphics-typesetting',
+      'typesetting': 'printing-graphics-typesetting',
+      'bulk-printing': 'printing-graphics-typesetting'
+    };
 
-  const reference =
-    "LP-" +
-    new Date().getFullYear() +
-    "-" +
-    Math.random().toString(36).slice(2, 8).toUpperCase();
+    const selectedPreset = aliases[preset] || preset;
 
-  const application = {
-    id: Date.now(),
-    reference: reference,
-    full_name: f.fullname.value.trim(),
-    date_of_birth: f.dob.value,
-    gender: f.gender.value,
-    phone: f.phone.value.trim(),
-    email: f.email.value.trim(),
-    location: f.location.value.trim(),
-    course: f.course.value,
-    level: f.level.value,
-    photo_path: photo.name,
-    preferred_time: f.time.value,
-    preferred_days: days.map(day => day.value),
-    experience: f.experience.value.trim(),
-    additional_information: f.additional.value.trim(),
-    status: "submitted"
-  };
+    if (selectedPreset) {
+      const select = form.elements.service;
 
-  try {
-    const response = await fetch(
-      SUPABASE_URL + "/rest/v1/applications",
-      {
-        method: "POST",
-        headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": "Bearer " + SUPABASE_KEY,
-          "Content-Type": "application/json",
-          "Prefer": "return=minimal"
-        },
-        body: JSON.stringify(application)
+      if (
+        select &&
+        [...select.options].some(option => option.value === selectedPreset)
+      ) {
+        select.value = selectedPreset;
       }
-    );
-
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      console.error("SUPABASE ERROR:", response.status, responseText);
-
-      alert(
-        "Supabase rejected the application.\n\n" +
-        "Error " + response.status + ":\n" +
-        responseText
-      );
-
-      return false;
     }
 
-    localStorage.setItem(
-      "leviteApplication",
-      JSON.stringify({
-        reference: reference,
-        status: "Submitted",
-        name: application.full_name,
-        course: application.course,
-        days: application.preferred_days,
-        time: application.preferred_time
-      })
-    );
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    f.style.display = "none";
+      const d = new FormData(form);
 
-    const success = document.querySelector(".success");
-    success.style.display = "block";
+      const name = String(d.get('name') || '').trim();
+      const service = String(d.get('service') || '').trim();
+      const details = String(d.get('details') || '').trim();
+      const phone = String(d.get('phone') || '').trim();
+      const channel = String(d.get('channel') || '').trim();
+      const email = String(d.get('email') || '').trim();
+      const privacyConsent = d.get('privacy_consent');
 
-    document.querySelector("#ref").textContent = reference;
+      if (
+        !name ||
+        !service ||
+        !details ||
+        !phone ||
+        !privacyConsent
+      ) {
+        form.reportValidity();
+        return;
+      }
 
-  } catch (error) {
-    console.error("FETCH ERROR:", error);
+      const msg =
+`Hello Levite Press Uganda. I would like to enquire about ${service}.
 
-    alert(
-      "The browser could not connect to Supabase.\n\n" +
-      "Technical error:\n" +
-      error.message
-    );
+Name: ${name}
+Phone: ${phone}
+Email: ${email || 'Not provided'}
+Preferred communication: ${channel || 'WhatsApp'}
+
+Requirement:
+${details}`;
+
+      const box = document.getElementById('quoteResult');
+
+      if (!box) return;
+
+      box.hidden = false;
+      box.textContent = 'Saving your request securely…';
+
+      try {
+        const response = await fetch(
+          'https://hpcbfitnzyfxpngxofoe.supabase.co/rest/v1/service_requests',
+          {
+            method: 'POST',
+
+            headers: {
+              'apikey':
+                'sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ',
+
+              'Authorization':
+                'Bearer sb_publishable_5weP2g_Lp6doZDpDhc6kew_bXEkxSuZ',
+
+              'Content-Type': 'application/json',
+
+              // IMPORTANT:
+              // Ask Supabase to return the newly saved request.
+              'Prefer': 'return=representation'
+            },
+
+            body: JSON.stringify({
+              name: name,
+              phone: phone,
+              email: email || null,
+              service: service,
+              details: details,
+              preferred_channel: channel || 'WhatsApp'
+            })
+          }
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(
+            `Supabase request failed: ${response.status} ${errorText}`
+          );
+        }
+
+        const savedRows = await response.json();
+
+        if (
+          !Array.isArray(savedRows) ||
+          savedRows.length < 1 ||
+          !savedRows[0]?.id
+        ) {
+          throw new Error(
+            'Supabase did not return a confirmed saved request.'
+          );
+        }
+
+        const requestId = savedRows[0].id;
+
+        const waUrl =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=` +
+          encodeURIComponent(msg);
+
+        const mailSubject =
+          `Service Request — ${service}`;
+
+        const mailUrl =
+          `mailto:${CONTACT_EMAIL}?subject=` +
+          encodeURIComponent(mailSubject) +
+          `&body=` +
+          encodeURIComponent(msg);
+
+        box.innerHTML = `
+          <strong>Your request has been received and confirmed.</strong><br>
+          Reference ID: <strong>${requestId}</strong>
+          <br><br>
+          Your enquiry has been saved in the Levite Press request system.
+          <div class="cta-row" style="margin-top:12px">
+            <a
+              class="btn"
+              href="${waUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Continue on WhatsApp
+            </a>
+
+            <a
+              class="btn outline-dark"
+              href="${mailUrl}"
+            >
+              Send Details by Email
+            </a>
+          </div>
+        `;
+
+        form.reset();
+
+      } catch (error) {
+
+        console.error(
+          'LEVITE PRESS SERVICE REQUEST ERROR:',
+          error
+        );
+
+        const waUrl =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=` +
+          encodeURIComponent(msg);
+
+        const mailSubject =
+          `Service Request — ${service}`;
+
+        const mailUrl =
+          `mailto:${CONTACT_EMAIL}?subject=` +
+          encodeURIComponent(mailSubject) +
+          `&body=` +
+          encodeURIComponent(msg);
+
+        box.innerHTML = `
+          <strong>We could not confirm the online request.</strong>
+          <br><br>
+          Please send your request directly using one of the options below.
+          <div class="cta-row" style="margin-top:12px">
+            <a
+              class="btn"
+              href="${waUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Send on WhatsApp
+            </a>
+
+            <a
+              class="btn outline-dark"
+              href="${mailUrl}"
+            >
+              Send by Email
+            </a>
+          </div>
+        `;
+      }
+
+      box.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+      });
+    });
   }
-
-  return false;
-}
+})();

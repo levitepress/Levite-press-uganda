@@ -1,11 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://hpcbfitnzyfxpngxofoe.supabase.co; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me; frame-ancestors 'none'">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Student Portal | Levite Press Uganda</title>
 <meta name="robots" content="noindex,nofollow">
@@ -26,15 +23,46 @@
 </nav>
 
 <main class="section">
+
   <div class="application">
-    <div class="eyebrow">PORTAL</div>
-    <h1>Student Portal</h1>
-    <div class="notice">The student portal is not active yet.</div>
-    <p>Levite Press is keeping this page private while the secure student account system is being completed. No password or student data is requested here at this stage.</p>
-    <p>For current training questions, timetable confirmation or application support, contact Levite Press directly.</p>
-    <a class="btn" href="https://wa.me/256786665412" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-    <a class="btn outline-dark" href="index.html">Return to Website</a>
+
+    <h2>🔒 Student Portal</h2>
+
+    <p>
+      Enter the access password provided by Levite Press via WhatsApp.
+    </p>
+
+    <input
+      id="pw"
+      type="password"
+      placeholder="Enter access password"
+    >
+
+    <br><br>
+
+    <button class="btn dark" onclick="login()">
+      Access Portal
+    </button>
+
+    <div
+      id="msg"
+      class="notice"
+      style="display:none"
+    ></div>
+
+    <p class="small">
+      Need the password? Contact Levite Press on WhatsApp.
+    </p>
+
+    <a
+      class="btn"
+      href="https://wa.me/256786665412"
+    >
+      Chat on WhatsApp
+    </a>
+
   </div>
+
 </main>
 
 <script>

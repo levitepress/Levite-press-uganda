@@ -1,4 +1,4 @@
-# V8 Amendment Notes — Service Consolidation
+# V9 Amendment Notes — Service Consolidation & Cleanup
 
 V8 consolidates the public service offer into five non-overlapping core areas:
 
@@ -22,3 +22,11 @@ Legacy service URLs are retained as noindex redirect pages so old links do not b
 The online-first model remains central: based in Kasangati, Masooli, Wakiso; priority markets Kampala, Wakiso, Mukono and Jinja; wider service across Uganda, East Africa and internationally where the service can be delivered remotely.
 
 Levite Tools remains future/coming-soon and is not presented as an active service.
+
+
+## V9 cleanup
+- Corrected broken breadcrumb markup on service pages.
+- Corrected service preselection links for Software & App Development and Database & Digital Solutions.
+- Improved website-design wording from “website designing” to “website design and development”.
+- Made the Levite Tools planning page crawlable because it is a genuine public roadmap page; it remains clearly marked as not-live.
+- Kept private application/admin/request pages out of search indexing.

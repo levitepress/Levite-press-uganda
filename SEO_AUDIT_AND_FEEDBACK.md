@@ -1,7 +1,7 @@
 # Levite Press Uganda — SEO / Website Feedback
 
 ## What I checked
-- The supplied V4 source files and existing Supabase-related code.
+- The supplied V4 source files and existing cloud backend-related code.
 - Web search visibility for the exact domain and service phrases.
 - Current Uganda competitors appearing for website-design and related service searches.
 
@@ -30,11 +30,11 @@
 - Removed fake social links from the main public navigation/footer.
 
 ## Important technical work still required before production student/customer data
-- Verify Supabase Row Level Security policies.
+- Verify cloud backend server-side access controls policies.
 - Implement real authentication for students and administrators.
-- Implement secure Supabase Storage for uploaded documents/photos.
+- Implement secure cloud backend Storage for uploaded documents/photos.
 - Confirm the exact database schema and application workflow.
-- Never place a Supabase service-role secret in browser JavaScript.
+- Never place a cloud backend service-role secret in browser JavaScript.
 - Add proper privacy/retention/consent wording before collecting sensitive data.
 - Connect the service enquiry form to a real backend only after the desired order workflow is defined.
 

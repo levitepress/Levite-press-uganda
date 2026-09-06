@@ -1,4 +1,4 @@
-# Levite Press Uganda — V14 Finalized Online-First Foundation
+# Levite Press Uganda — V9 Service-Consolidated Cleanup
 
 This build continues the V7 online-first foundation and applies the next confirmed amendment: simplify the public service menu into five clear, non-overlapping service areas.
 
@@ -20,5 +20,5 @@ This build avoids unverified statistics such as 100% satisfaction, 500+ students
 Old overlapping service URLs are retained as noindex/follow pages that redirect users to the consolidated canonical pages. They are excluded from the sitemap.
 
 
-## V14 finalization
-Application upload handling, Uganda-focused passport-style photo guidance, privacy consent, technical SEO cleanup, public Future Tools indexing consistency, and Supabase setup documentation are included. See `V14_FINALIZATION_NOTES.md` and `supabase/schema.sql`.
+## V9 cleanup pass
+This release corrects navigation/breadcrumb issues, fixes service enquiry preselection links, improves wording, and aligns robots.txt with the public Levite Tools roadmap page.

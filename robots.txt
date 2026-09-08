@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin-dashboard.html
-Disallow: /student-portal.html
-Disallow: /application.html
-Disallow: /request-quote.html
+Disallow: /admin/
 Sitemap: https://levitepress.online/sitemap.xml

@@ -1,0 +1,7 @@
+LEVITE PRESS UGANDA — CLEAN DEPLOYMENT
+
+This package contains the updated website with the supplied Levite Press logo.
+When deploying to GitHub Pages, replace the contents of the repository with the contents of this ZIP.
+Delete obsolete files from the repository first (especially files from older website versions) so old pages/assets do not remain and cause confusion.
+The site uses relative paths so it works when extracted and uploaded as repository files.
+Do not expose Supabase service-role/secret keys in frontend files.

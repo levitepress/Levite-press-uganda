@@ -1,0 +1,9 @@
+CLEAN DEPLOYMENT CHECKLIST
+- Upload this package's contents, not the outer folder.
+- Ensure index.html is at repository root.
+- Remove old files from the repository before upload if they are not part of this package.
+- Keep CNAME containing levitepress.online.
+- Replace assets/logo.png with your real logo (same filename) when supplied.
+- Configure config.js with Supabase public URL + anon key only.
+- Run SUPABASE_SETUP.sql and create an Auth admin user.
+- Test Home, Services, Training, Student Downloads, Contact, Admin.

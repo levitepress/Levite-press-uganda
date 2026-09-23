@@ -1,40 +1,17 @@
-LEVITE PRESS UGANDA WEBSITE — UPDATED STARTER
-===============================================
+LEVITE PRESS UGANDA — NEW PORTAL STARTER
 
-This package keeps the existing Levite Press Uganda design and adds:
-- Expanded service list: scanning, PDF, conversion, compression, bulk SMS, AI/OCR typing, digital delivery.
-- Client Portal section for selecting images, GIFs, videos and documents from a phone/PC.
-- Local file preview before sending a request.
-- WhatsApp request preparation using +256 786 665 412.
-- A safe starter website assistant with service-related replies.
-- Responsive mobile layout.
+1. Extract this ZIP.
+2. Upload/replace these files in the GitHub repository used for levitepress.online.
+3. The frontend is already connected to the Supabase project:
+   hpcbfitnzyfxpngxofoe
+4. The browser key included in assets/supabase.js is the Supabase publishable key. Never replace it with a service-role/secret key.
+5. In Supabase Authentication URL settings, add the final website origin (for example https://levitepress.online) to the allowed redirect/site URLs.
+6. The exact original Levite Press logo asset was not retrievable from the public site in this build, so assets/logo.svg is a clean recreated approximation. Replace that SVG with the exact logo later if you provide the original logo file.
+7. Student registration uses account_type=student only to choose the initial student/client profile. It cannot create an admin account.
+8. Authenticated files use the private client-documents bucket and signed downloads.
+9. admin.html is protected by the database role/RLS; the browser check is only a user-interface convenience.
 
-IMPORTANT ABOUT ONLINE STORAGE
-------------------------------
-The upload selector currently previews files in the user's browser and prepares a WhatsApp request.
-It does NOT permanently store files online. Persistent client/admin uploads require a server or cloud
-storage service (for example, a backend with authenticated storage). This is intentional so the zip
-does not contain fake storage or expose credentials.
-
-IMPORTANT ABOUT AI
-------------------
-The assistant in this static package is a starter FAQ assistant. A real AI assistant should be
-connected through a server-side API endpoint so the API key is never placed in index.html or script.js.
-
-PAYMENTS
---------
-The website can be connected to a payment provider through a backend. Do not route payments through
-an OpenAI/ChatGPT personal account. A proper merchant/payment account should receive customer payments,
-then apply the agreed business split/settlement rules.
-
-FILES
------
-index.html
-style.css
-script.js
-README.txt
-assets/levite-press-logo.jpg
-
-WHATSAPP
---------
-+256 786 665 412
+IMPORTANT:
+- GitHub Pages can host the static frontend.
+- Authenticated workflows require internet access to Supabase.
+- Do not commit any Supabase service_role or secret key.

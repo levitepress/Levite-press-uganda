@@ -1,0 +1,10 @@
+{
+  "name":"Levite Press Uganda",
+  "short_name":"Levite Press",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "background_color":"#f7f9fc",
+  "theme_color":"#0f766e",
+  "description":"Levite Press Uganda digital services and student portal.",
+  "icons":[{"src":"assets/logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
